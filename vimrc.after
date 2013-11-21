@@ -1,0 +1,26 @@
+if has('gui_running')
+  color molokai
+  " remove bell
+  set vb
+  " remove toggle toolbar
+  set guioptions=egmrt
+else
+  color ir_black
+end
+
+" gist-vim defaults
+if has("mac")
+  ""let g:gist_clip_command = 'pbcopy'
+  set guifont=Monaco:h13        " Monaco's pretty :D
+elseif has("unix")
+  let g:gist_clip_command = 'xclip -selection clipboard'
+endif
+
+if has("mouse")
+  set mouse=a
+  set mousehide
+endif
+
+syntax on
+filetype on
+au BufNewFile,BufRead *.prawn set filetype=ruby
