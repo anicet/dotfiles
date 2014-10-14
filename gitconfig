@@ -4,6 +4,7 @@
 [diff]
   color = true
 [alias]
+  gr = blame
   st = status
   ci = commit
   br = branch
