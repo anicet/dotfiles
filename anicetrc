@@ -1,0 +1,51 @@
+# Add `source $HOME/.anicetrc` to .zshrc or .bashrc
+
+# brew install chruby ruby-install
+# echo "2.0.0-p353" > ~/.ruby-version
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+
+export LC_ALL="en_US.UTF-8"
+export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
+#export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:
+export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+export PGUSER='anicet'
+export GEM_EDITOR="vim"
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export GOROOT=`go env GOROOT`
+export PATH=$PATH:$GOROOT/bin
+export DEVCODEPATH=~/code
+
+# Disable autorename tmux
+# export DISABLE_AUTO_TITLE="true"
+alias pair_ok='sudo dscl . -create /Users/pair UserShell /bin/bash'
+alias pair_ko='sudo dscl . -create /Users/pair UserShell /usr/bin/false'
+alias pair_kick='wemux kick pair'
+alias bi='bundle install'
+alias be='bundle exec'
+alias migrate_dev='be rake db:migrate RAILS_ENV=development'
+alias migrate_test='be rake db:migrate RAILS_ENV=test'
+alias migrate='be rake db:migrate RAILS_ENV=development && be rake db:migrate RAILS_ENV=test'
+alias rollback='be rake db:rollback RAILS_ENV=development && be rake db:rollback RAILS_ENV=test'
+alias rebuild='bi && be rake db:rebuild && be rake fake:pages'
+alias searchlan='nmap -sV -p 22 192.168.0.1-255'
+alias ruby21='rbenv global 2.1.0-preview1 && rbenv rehash'
+alias ruby20='rbenv global 2.0.0-p247 && rbenv rehash'
+alias logstash='logstash agent -f admin/logstash/development.conf'
+alias clean_es='rm -rf ~/elasticsearch/current/data/elasticsearch/nodes'
+alias sidekiqmap='be sidekiq -C config/sidekiq.yml'
+alias m4a2mp3='for f in *.m4a; do ffmpeg -i "$f" -codec:v copy -codec:a libmp3lame -q:a 2 "${f%.m4a}.mp3"; done'
+alias tmuxn='tmux new -s'
+alias tmuxa='tmux attach -t'
+alias tmuxl='tmux list-sessions'
+
+
+transfer() {
+  # write to output to tmpfile because of progress bar
+  tmpfile=$( mktemp -t transfer );
+  curl --progress-bar --upload-file $1 https://transfer.sh/$(basename $1) >> $tmpfile;
+  cat $tmpfile; rm -f $tmpfile;
+}
+alias transfer=transfer
