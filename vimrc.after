@@ -5,7 +5,8 @@ if has('gui_running')
   " remove toggle toolbar
   set guioptions=egmrt
 else
-  color ir_black
+  "color ir_black
+  color molokai
 end
 
 " gist-vim defaults
@@ -21,6 +22,11 @@ if has("mouse")
   set mousehide
 endif
 
-syntax on
-filetype on
-au BufNewFile,BufRead *.prawn set filetype=ruby
+
+let g:go_fmt_command = "goimports"
+" Golang
+"filetype off
+"filetype plugin indent off
+"set runtimepath+=$GOROOT/misc/vim
+"filetype plugin indent on
+"syntax on
