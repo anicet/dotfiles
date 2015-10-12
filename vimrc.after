@@ -29,3 +29,8 @@ else
 endif
 
 let g:go_fmt_command = "goimports"
+let g:table_mode_separator = '|'
+let g:table_mode_corner = '|'
+let g:table_mode_corner_corner = '|'
+autocmd FileType markdown TableModeEnable
+
