@@ -1,8 +1,8 @@
 cd ~;
 
-ln -s ~/code/dotfiles/anicetrc .anicetrc
-ln -s ~/code/dotfiles/tmux.conf .tmux.conf
-ln -s ~/code/dotfiles/vimrc.after .vimrc.after
-ln -s ~/code/dotfiles/gitignore .gitignore
+ln -s ~/.dotfiles/anicetrc .anicetrc
+ln -s ~/.dotfiles/tmux.conf .tmux.conf
+ln -s ~/.dotfiles/vimrc.after .vimrc.after
+ln -s ~/.dotfiles/gitignore .gitignore
 
-cp ~/code/dotfiles/gitconfig .gitconfig
+cp ~/.dotfiles/gitconfig .gitconfig
